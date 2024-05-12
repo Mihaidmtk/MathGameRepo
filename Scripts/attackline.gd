@@ -16,13 +16,11 @@ func _ready():
 	add_child(trail)
 
 func _process(delta : float):
-		
 	if not is_colided:
 		position.x = time
 		position.y = sinus(position.x)
 		time += delta * SPEED
-		
-		
+	pass
 
 func linear(x:float, a:float = 1, b:float = 0) -> float:
 	x = (x - origin_offset.x) * 1/Global.cell_size.x 

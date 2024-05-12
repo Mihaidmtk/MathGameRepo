@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwdrdddedeomg"]
+
+[ext_resource type="Script" path="res://Scripts/slider_container.gd" id="1_1dfcy"]
+
+[node name="slider_container" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1dfcy")
+
+[node name="a" type="Label" parent="."]
+layout_mode = 2
+text = "a = "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="a_slider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(280, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+min_value = -10.0
+max_value = 10.0
+value = 1.0
+
+[node name="b" type="Label" parent="."]
+layout_mode = 2
+text = "b ="
+
+[node name="b_slider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -10.0
+max_value = 10.0
+value = 1.0
+
+[node name="c" type="Label" parent="."]
+layout_mode = 2
+text = "c ="
+
+[node name="c_slider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -10.0
+max_value = 10.0
+value = 1.0

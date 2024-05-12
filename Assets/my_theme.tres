@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bshwjs5xclbni"]
+
+[ext_resource type="FontFile" uid="uid://c84lq1qy8gb25" path="res://Assets/Fonts/Cambria-Font-For-Windows.ttf" id="1_4cwg5"]
+[ext_resource type="FontFile" uid="uid://bxlv3smqtvixq" path="res://Assets/Fonts/PixelOperator8.ttf" id="1_rli2x"]
+
+[resource]
+default_font = ExtResource("1_4cwg5")
+default_font_size = 20
+Button/fonts/font = ExtResource("1_4cwg5")
+Label/font_sizes/font_size = 22
+Label/font_sizes/health = 10
+Label/fonts/font = ExtResource("1_4cwg5")
+LineEdit/fonts/font = ExtResource("1_rli2x")
