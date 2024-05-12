@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmp1hrg0nkr87"]
+[gd_scene load_steps=10 format=3 uid="uid://bmp1hrg0nkr87"]
 
 [ext_resource type="PackedScene" uid="uid://legi4b5omgy4" path="res://Scenes/attackline.tscn" id="1_tfeit"]
 [ext_resource type="Script" path="res://Scripts/test_scene.gd" id="1_y65b3"]
@@ -11,13 +11,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2m7v"]
 size = Vector2(126, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkadw"]
+size = Vector2(50, 200)
+
 [node name="test_scene" type="Node2D"]
 script = ExtResource("1_y65b3")
 
-[node name="attackline" parent="." instance=ExtResource("1_tfeit")]
-position = Vector2(37, 127)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(431, 256)
 texture = ExtResource("2_j6eey")
 
@@ -80,6 +81,9 @@ offset_bottom = 64.0
 [node name="defend_select" type="OptionButton" parent="UI/Func Selection/defend_func"]
 layout_mode = 2
 
+[node name="defend_slider_container" parent="UI/Func Selection/defend_func" instance=ExtResource("6_cr628")]
+layout_mode = 2
+
 [node name="Panel" type="Panel" parent="UI"]
 layout_mode = 0
 offset_left = 1021.0
@@ -117,6 +121,39 @@ offset_bottom = 210.0
 text = "P2: 100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="attackline" parent="UI" instance=ExtResource("1_tfeit")]
+position = Vector2(156, -53)
+
+[node name="player1" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="player1"]
+offset_left = 10.0
+offset_top = 160.0
+offset_right = 60.0
+offset_bottom = 360.0
+color = Color(0.278718, 0.674212, 0.762191, 1)
+
+[node name="Area2D" type="Area2D" parent="player1"]
+position = Vector2(35, 260)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player1/Area2D"]
+shape = SubResource("RectangleShape2D_tkadw")
+
+[node name="player2" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="player2"]
+offset_left = 960.0
+offset_top = 160.0
+offset_right = 1010.0
+offset_bottom = 360.0
+color = Color(1, 0.0431373, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="player2"]
+position = Vector2(985, 260)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player2/Area2D"]
+shape = SubResource("RectangleShape2D_tkadw")
 
 [connection signal="item_selected" from="UI/Func Selection/attack_func/attack_select" to="UI" method="_on_attack_select_item_selected"]
 [connection signal="item_selected" from="UI/Func Selection/defend_func/defend_select" to="UI" method="_on_defend_select_item_selected"]

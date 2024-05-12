@@ -8,6 +8,9 @@ extends Control
 @onready var dropdown_defend = get_node(dropdown_defend_path)
 @onready var defend_func = $"Func Selection/defend_func"
 
+@onready var attack_slider_container = $"Func Selection/attack_func/attack_slider_container"
+@onready var defend_slider_container = $"Func Selection/defend_func/defend_slider_container"
+
 var attack_selected: int = 0
 var defend_selected: int = 0
 
@@ -18,8 +21,6 @@ var defend_selected: int = 0
 # 3: sqrt
 # 4: sin
 # 5: cos
-
-
 
 func _ready():
 	#attack
@@ -41,7 +42,7 @@ func _ready():
 		dropdown_attack.set_item_disabled(idx, true)
 		dropdown_defend.set_item_disabled(idx, true)
 		
-func _procces(delta):
+func _procces(_delta):
 	pass
 
 func _on_attack_select_item_selected(index):
