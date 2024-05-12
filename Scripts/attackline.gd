@@ -39,6 +39,8 @@ func sinus(x:float, a:float = 1, b:float = 0) -> float:
 
 func _on_area_2d_area_entered(area):
 	print("body entered")
-	print(area)
+	if area.is_in_group("obstacle"):
+		print("destroy obstacle")
+		area.get_parent().queue_free()
 	is_colided = true
 	if trail: trail.stop()

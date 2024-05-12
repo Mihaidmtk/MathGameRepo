@@ -14,10 +14,26 @@ script = ExtResource("1_y65b3")
 position = Vector2(37, 127)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(644, 315)
+position = Vector2(431, 256)
 texture = ExtResource("2_j6eey")
 
 [node name="Area2D" type="Area2D" parent="Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 shape = SubResource("RectangleShape2D_b2m7v")
+
+[node name="Health" type="Panel" parent="."]
+offset_left = 1020.0
+offset_right = 1152.0
+offset_bottom = 411.0
+
+[node name="Coefficent" type="Panel" parent="."]
+offset_left = 1020.0
+offset_top = 411.0
+offset_right = 1152.0
+offset_bottom = 520.0
+
+[node name="Panel2" type="Panel" parent="."]
+offset_top = 520.0
+offset_right = 1152.0
+offset_bottom = 645.0
