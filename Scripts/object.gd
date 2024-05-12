@@ -6,6 +6,8 @@ var body_ref
 var offset: Vector2
 var initialPos: Vector2
 
+var current_trail : Trail
+
 func _process(_delta):
 	if dragable:
 		if Input.is_action_just_pressed("mouse_click"):
@@ -29,11 +31,13 @@ func _on_area_2d_mouse_entered():
 	if !Global.is_dragging:
 		dragable = true
 		scale = Vector2(1.05, 1.05)
+		make_trail()
 
 func _on_area_2d_mouse_exited():
 	if !Global.is_dragging:
 		dragable = false
 		scale = Vector2(1, 1)
+		current_trail.stop()
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("droppable"):
@@ -41,8 +45,15 @@ func _on_area_2d_body_entered(body):
 		body.modulate = Color(Color.REBECCA_PURPLE, 1)
 		body_ref = body
 
-
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("droppable"):
 		is_inside_dropable = false
 		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)
+
+func make_trail():
+	if current_trail: current_trail.stop()
+	current_trail = Trail.create()
+	add_child(current_trail)
+	pass
+		
+
