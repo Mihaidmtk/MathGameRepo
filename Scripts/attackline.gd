@@ -2,7 +2,6 @@ extends Node2D
 class_name AttackLine
 
 var player
-var trail: Trail
 
 func _on_area_2d_area_entered(area):
 	print("body entered")
@@ -15,7 +14,6 @@ func _on_area_2d_area_entered(area):
 		pass
 	if player == 1: Global.p1_is_collided = true
 	elif player == 2: Global.p2_is_collided = true
-	if trail: trail.stop()
 	self.queue_free()
 	
 static func create() -> AttackLine:

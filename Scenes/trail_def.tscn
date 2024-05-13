@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://7wn1ugrgm665"]
+
+[ext_resource type="Script" path="res://trail_def.gd" id="1_fbsgn"]
+
+[node name="trail_def" type="Line2D"]
+top_level = true
+default_color = Color(76.216, 40.54, 0, 1)
+script = ExtResource("1_fbsgn")
+
+[node name="collider" type="Area2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

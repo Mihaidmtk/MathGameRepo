@@ -25,11 +25,12 @@ var grid_size := Vector2(1000, 500)
 var border_offset := Vector2(10,10)
 
 var SPEED : float = 100
+var DEF_RANGE = 2
 
 var p1_attack : AttackLine
 var p2_attack : AttackLine
-#var p1_defend : AttackLine
-#var p2_defend : AttackLine
+var p1_defend : DefendLine
+var p2_defend : DefendLine
 
 var turn : int = 1
 
@@ -39,7 +40,7 @@ var data : Array = [[[0, 0, 0, 0], [0, 0, 0, 0]],
 var available_func : Array = [[1, 1, 1, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 0]]
 
 
-func _ready():
+func _ready(): #line spawns and slider values
 	#setup line spawns for p1
 	attack_spawn_p1.modulate = Color.RED
 	attack_spawn_p2.modulate = Color.RED
@@ -61,26 +62,38 @@ func _ready():
 	defend_slider_container.b_slider.value = 0
 	defend_slider_container.c_slider.value = -1
 
-func _process(delta):
+func _process(delta): #main loop
 	if turn == 0:
 		
+		#create attacking/defending functions
 		if !p1_attack && !Global.p1_is_collided:
 			p1_attack = AttackLine.create()
 			p1_attack.player = 1
 			attack_spawn_p1.add_child(p1_attack)
-
 		if !p2_attack && !Global.p2_is_collided: 
 			p2_attack = AttackLine.create()
 			p2_attack.player = 2
 			attack_spawn_p2.add_child(p2_attack)
+		if !p1_defend:
+			p1_defend = DefendLine.create()
+			defend_spawn_p1.add_child(p1_defend)
+		if !p2_defend:
+			p2_defend = DefendLine.create()
+			defend_spawn_p2.add_child(p2_defend)
 		
+		#move attacking/defending funtions
 		if !Global.p1_is_collided:
 			p1_attack.position.x += delta * SPEED
-			p1_attack.position.y = CreateFunction(p1_attack.position.x, data[0][0][0], data[0][0][1], data[0][0][2], data[0][0][3])
+			p1_attack.position.y = CreateFunction(p1_attack.position.x, data[0][0][0], data[0][0][1], data[0][0][2])
 		if !Global.p2_is_collided:
 			p2_attack.position.x -= delta * SPEED
-			p2_attack.position.y = CreateFunction(-p2_attack.position.x, data[0][1][0], data[0][1][1], data[0][1][2], data[0][1][3])
-		
+			p2_attack.position.y = CreateFunction(-p2_attack.position.x, data[0][1][0], data[0][1][1], data[0][1][2])
+		if p1_defend.position.x < DEF_RANGE * cell_size.x:
+			p1_defend.position.x += delta * SPEED
+			p1_defend.position.y = CreateFunction(p1_defend.position.x, data[1][0][0], data[1][0][1], data[1][0][2])
+		if p2_defend.position.x > -DEF_RANGE * cell_size.x:
+			p2_defend.position.x -= delta * SPEED
+			p2_defend.position.y = CreateFunction(-p2_defend.position.x, data[1][1][0], data[1][1][1], data[1][1][2])
 	else:
 		
 		if turn == 1:
@@ -143,7 +156,7 @@ func get_expo(x:float, a:int, b:int):
 	var xo = x*(1/cell_size.x)
 	return (-b*pow(a, xo)) * cell_size.y
 
-func CreateFunction(x:float, id:int = 0, a:int = 1, b:int = 0, c:int = 0) -> float:
+func CreateFunction(x:float, id:int = 0, a:int = 1, b:int = 0) -> float:
 	if id == 1: return get_linear(x, a)
 	elif id == 2: return get_sqr(x, a, b)
 	elif id == 3: return get_sqrt(x, a)
@@ -153,19 +166,14 @@ func CreateFunction(x:float, id:int = 0, a:int = 1, b:int = 0, c:int = 0) -> flo
 	elif id == 7: return get_expo(x, a, b)
 	else: return 0
 
-func _on_end_turn_button_up():
+func _on_end_turn_button_up(): #end turn button press
 	#finish current turn
-	if turn == 1:
-		data[0][0][1] = attack_slider_container.a_slider.value
-		data[0][0][2] = attack_slider_container.b_slider.value
-		data[0][0][3] = attack_slider_container.c_slider.value
-	elif turn == 2:
-		data[0][1][1] = attack_slider_container.a_slider.value
-		data[0][1][2] = attack_slider_container.b_slider.value
-		data[0][1][3] = attack_slider_container.c_slider.value
+	if turn != 0:#p1 attack/defendfunction save
+		update_data()
+		print(data)
 	#next turn setup
 	turn += 1
-	turn %= 3
+	turn %= 3 #rounds are divided in 3 turns and then they repeat
 	
 	if turn != 0: 
 		
@@ -173,19 +181,14 @@ func _on_end_turn_button_up():
 		Global.p2_is_collided = false
 		
 		update_selects()
-		attack_slider_container.a_slider.value = 1
-		attack_slider_container.b_slider.value = 0
-		attack_slider_container.c_slider.value = 1
-		
-		defend_slider_container.a_slider.value = 1
-		defend_slider_container.b_slider.value = 0
-		defend_slider_container.c_slider.value = -1
+		reset_sliders()
 	
 	attack_select.select(0)
 	defend_select.select(0)
 	
 func _on_defend_select_item_selected(index):
 	data[1][turn-1][0] = index
+	
 func _on_attack_select_item_selected(index):
 	data[0][turn-1][0] = index
 	
@@ -193,4 +196,19 @@ func update_selects():
 	for idx in range(0, len(available_func[turn - 1])):
 		attack_select.set_item_disabled(idx, not available_func[turn - 1][idx])
 		defend_select.set_item_disabled(idx, not available_func[turn - 1][idx])
+		
+func update_data():
+	data[0][turn - 1][1] = attack_slider_container.a_slider.value
+	data[0][turn - 1][2] = attack_slider_container.b_slider.value
+	data[0][turn - 1][3] = attack_slider_container.c_slider.value
+	data[1][turn - 1][1] = defend_slider_container.a_slider.value
+	data[1][turn - 1][2] = defend_slider_container.b_slider.value
+	data[1][turn - 1][3] = defend_slider_container.c_slider.value
+func reset_sliders():
+	attack_slider_container.a_slider.value = 1
+	attack_slider_container.b_slider.value = 0
+	attack_slider_container.c_slider.value = 1
 	
+	defend_slider_container.a_slider.value = 1
+	defend_slider_container.b_slider.value = 0
+	defend_slider_container.c_slider.value = -1
