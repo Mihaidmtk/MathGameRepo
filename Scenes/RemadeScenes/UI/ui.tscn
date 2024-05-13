@@ -1,0 +1,252 @@
+[gd_scene load_steps=7 format=3 uid="uid://dj2u83xifqsxx"]
+
+[ext_resource type="Script" path="res://Scripts/RemadeScripts/ui.gd" id="1_gr0p4"]
+[ext_resource type="PackedScene" uid="uid://dt5t0lr1e2nky" path="res://Scenes/RemadeScenes/UI/input.tscn" id="1_t7y58"]
+[ext_resource type="Texture2D" uid="uid://3u0qrsbmi135" path="res://Assets/Sprites/clock.png" id="2_vb41x"]
+[ext_resource type="Texture2D" uid="uid://citq1gp0gm2t2" path="res://Assets/Sprites/clock_press.png" id="3_iqsyp"]
+[ext_resource type="Texture2D" uid="uid://da5adwsyu144x" path="res://Assets/Sprites/heart.png" id="4_oada0"]
+[ext_resource type="Texture2D" uid="uid://bwyqyju4rd6cq" path="res://Assets/Sprites/turn_indicator.png" id="5_novbt"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gr0p4")
+
+[node name="input" parent="." instance=ExtResource("1_t7y58")]
+layout_mode = 1
+offset_top = 0.0
+offset_right = -287.0
+
+[node name="game_state" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -287.0
+offset_top = -160.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="EndTurn" type="TextureButton" parent="game_state"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+anchor_left = 1.0
+anchor_top = 0.512
+anchor_right = 1.0
+anchor_bottom = 0.512
+offset_left = -114.0
+offset_top = -62.92
+offset_right = -14.0
+offset_bottom = 63.08
+grow_horizontal = 2
+texture_normal = ExtResource("2_vb41x")
+texture_pressed = ExtResource("3_iqsyp")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Turn" type="Label" parent="game_state/EndTurn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -24.0
+offset_right = 49.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Încheie Tura"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Control" parent="game_state"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.04
+anchor_top = 0.119
+anchor_right = 0.04
+anchor_bottom = 0.119
+offset_left = -0.0800018
+offset_top = -0.0400009
+offset_right = 149.92
+offset_bottom = 49.96
+
+[node name="heart_1" type="TextureRect" parent="game_state/Health"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+texture = ExtResource("4_oada0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="heart_2" type="TextureRect" parent="game_state/Health"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_oada0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="heart_3" type="TextureRect" parent="game_state/Health"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_oada0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="turns" type="Control" parent="game_state"]
+custom_minimum_size = Vector2(150, 69)
+layout_mode = 1
+anchor_left = 0.04
+anchor_top = 0.906
+anchor_right = 0.04
+anchor_bottom = 0.906
+offset_left = -0.0800018
+offset_top = -69.96
+offset_right = 149.92
+offset_bottom = -0.960007
+grow_vertical = 2
+
+[node name="Arrow" type="Control" parent="game_state/turns"]
+custom_minimum_size = Vector2(50, 69)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 50.0
+grow_vertical = 2
+
+[node name="indicator_1" type="TextureRect" parent="game_state/turns/Arrow"]
+custom_minimum_size = Vector2(25, 23)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_bottom = 23.0
+grow_horizontal = 2
+texture = ExtResource("5_novbt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="indicator_2" type="TextureRect" parent="game_state/turns/Arrow"]
+custom_minimum_size = Vector2(25, 23)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_novbt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="indicator_3" type="TextureRect" parent="game_state/turns/Arrow"]
+custom_minimum_size = Vector2(25, 23)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_novbt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Tags" type="Control" parent="game_state/turns"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="tag_1" type="Label" parent="game_state/turns/Tags"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.5
+offset_right = 52.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Jucătorul 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tag_2" type="Label" parent="game_state/turns/Tags"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -11.5
+offset_right = 52.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jucătorul 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tag_3" type="Label" parent="game_state/turns/Tags"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.5
+offset_top = -23.0
+offset_right = 52.5
+grow_horizontal = 2
+grow_vertical = 0
+text = " Rezolvare"
+horizontal_alignment = 1
+vertical_alignment = 1

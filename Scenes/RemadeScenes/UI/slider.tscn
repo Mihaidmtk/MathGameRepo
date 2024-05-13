@@ -12,7 +12,7 @@ theme = ExtResource("1_3alj1")
 script = ExtResource("2_v61h3")
 
 [node name="coefficient_value" type="HSlider" parent="."]
-custom_minimum_size = Vector2(150, 20)
+custom_minimum_size = Vector2(140, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4

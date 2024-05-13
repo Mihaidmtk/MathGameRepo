@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/function_selector.gd" id="1_61xoi"]
 
 [node name="function_selector" type="VBoxContainer"]
-custom_minimum_size = Vector2(250, 160)
+custom_minimum_size = Vector2(205, 160)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -902.0
+offset_right = -947.0
 offset_bottom = -488.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -23,13 +23,13 @@ alignment = 1
 layout_mode = 2
 
 [node name="slider_a" parent="." instance=ExtResource("1_34ri5")]
+custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
-alignment = 1
 
 [node name="slider_b" parent="." instance=ExtResource("1_34ri5")]
+custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
-alignment = 1
 
 [node name="slider_c" parent="." instance=ExtResource("1_34ri5")]
+custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
-alignment = 1

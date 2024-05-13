@@ -1,4 +1,5 @@
 extends VBoxContainer
+class_name FunctionSelector
 @onready var slider_a = $slider_a
 @onready var slider_b = $slider_b
 @onready var slider_c = $slider_c
@@ -19,6 +20,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+	
+static func create() -> FunctionSelector:
+	var scn = preload("res://Scenes/RemadeScenes/UI/function_selector.tscn")
+	return scn.instantiate()
+	
+func get_values() -> Array:
+	var data : Array = [type.selected, mode.selected, Vector3(slider_a.value, slider_b.value, slider_c.value)]
+	return data
 
 
 
