@@ -21,29 +21,35 @@ var defend_selected: int = 0
 # 3: sqrt
 # 4: sin
 # 5: cos
+# 6: loga
+# 7: a^x
 
 func _ready():
 	#attack
 	dropdown_attack.add_item("nimic")
-	dropdown_attack.add_item("ax + b")
+	dropdown_attack.add_item("ax + c")
 	dropdown_attack.add_item("ax² + bx + c")
-	dropdown_attack.add_item("a√x")
-	dropdown_attack.add_item("sinx")
+	dropdown_attack.add_item("a*√x + c")
+	dropdown_attack.add_item("a*sinx + c")
+	dropdown_attack.add_item("a*cosx + c")
+	dropdown_attack.add_item("b*logₐx + c")
+	dropdown_attack.add_item("b*aˣ + c")
 	
 	#defend
 	dropdown_defend.add_item("nimic")
 	dropdown_defend.add_item("ax + b")
 	dropdown_defend.add_item("ax² + bx + c")
-	dropdown_defend.add_item("a√x")
-	dropdown_defend.add_item("sinx")
+	dropdown_defend.add_item("a*√x + c")
+	dropdown_defend.add_item("a*sinx + c")
+	dropdown_defend.add_item("a*cosx + c")
+	dropdown_defend.add_item("b*logₐx + c")
+	dropdown_defend.add_item("b*aˣ + c")
 	
 	#disable items at start
 	for idx in range(3,dropdown_attack.item_count):
 		dropdown_attack.set_item_disabled(idx, true)
 		dropdown_defend.set_item_disabled(idx, true)
-		
-func _procces(_delta):
-	pass
+
 
 func _on_attack_select_item_selected(index):
 	dropdown_defend.set_item_disabled(attack_selected, false)

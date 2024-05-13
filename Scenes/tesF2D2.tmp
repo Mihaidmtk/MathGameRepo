@@ -181,7 +181,7 @@ texture = ExtResource("8_jsvb1")
 
 [node name="attack_spawn_p2" type="Node2D" parent="."]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(910, 210)
+position = Vector2(110, 210)
 
 [node name="Sprite2D" type="Sprite2D" parent="attack_spawn_p2"]
 texture = ExtResource("8_jsvb1")
@@ -195,7 +195,7 @@ texture = ExtResource("8_jsvb1")
 
 [node name="defend_spawn_p2" type="Node2D" parent="."]
 modulate = Color(0.4, 0.2, 0.6, 1)
-position = Vector2(910, 310)
+position = Vector2(110, 310)
 
 [node name="Sprite2D" type="Sprite2D" parent="defend_spawn_p2"]
 texture = ExtResource("8_jsvb1")

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/line_trail.gd" id="1_3nhc6"]
 
 [node name="trail" type="Line2D"]
+show_behind_parent = true
 top_level = true
 z_index = 4
 default_color = Color(0.353823, 0.0274443, 0.0435597, 1)
@@ -13,6 +14,6 @@ antialiased = true
 script = ExtResource("1_3nhc6")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.02
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

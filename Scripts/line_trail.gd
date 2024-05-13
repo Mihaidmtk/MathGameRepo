@@ -4,10 +4,11 @@ class_name Trail
 @onready var timer = $Timer
 @onready var curve := Curve2D.new()
 
-var MAX_POINTS = 1000
+var MAX_POINTS = 2000
 var should_add_point : bool = true
 
 func _process(delta: float) -> void:
+	position = get_parent().get_parent().position
 	if should_add_point:
 		should_add_point = false
 		timer.start()
