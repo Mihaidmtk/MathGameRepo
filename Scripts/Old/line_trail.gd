@@ -12,5 +12,3 @@ func _process(_delta: float) -> void:
 	if curve.get_baked_points().size() > MAX_POINTS:
 		curve.remove_point(0)
 	points = curve.get_baked_points()
-	
-

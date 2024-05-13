@@ -17,5 +17,5 @@ func _on_area_2d_area_entered(area):
 	self.queue_free()
 	
 static func create() -> AttackLine:
-	var scn = preload("res://Scenes/attackline.tscn")
+	var scn = preload("res://Scenes/attack_line.tscn")
 	return scn.instantiate()

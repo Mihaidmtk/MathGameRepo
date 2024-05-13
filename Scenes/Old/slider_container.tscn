@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwdrdddedeomg"]
 
-[ext_resource type="Script" path="res://Scripts/slider_container.gd" id="1_1dfcy"]
+[ext_resource type="Script" path="res://Scripts/Old/slider_container.gd" id="1_1dfcy"]
 
 [node name="slider_container" type="HBoxContainer"]
 offset_right = 40.0

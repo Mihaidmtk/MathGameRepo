@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8wb7f56v5y0w"]
+
+[ext_resource type="Script" path="res://FunctionSpawner_test.gd" id="1_0qh4u"]
+[ext_resource type="PackedScene" uid="uid://51mik1n4s0ll" path="res://Scenes/RemadeScenes/GameLogic/function_spawner.tscn" id="2_60fys"]
+
+[node name="FunctionSpawner_test" type="Node2D"]
+script = ExtResource("1_0qh4u")
+
+[node name="function_spawner" parent="." instance=ExtResource("2_60fys")]
+position = Vector2(269, 50)
+
+[node name="function_spawner2" parent="." instance=ExtResource("2_60fys")]
+position = Vector2(416, 93)

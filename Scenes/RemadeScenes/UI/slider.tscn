@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d08kerqe4rgvp"]
+
+[ext_resource type="Theme" uid="uid://bshwjs5xclbni" path="res://Assets/my_theme.tres" id="1_3alj1"]
+[ext_resource type="Script" path="res://Scripts/RemadeScripts/slider.gd" id="2_v61h3"]
+
+[node name="slider" type="HBoxContainer"]
+custom_minimum_size = Vector2(240, 30)
+offset_right = 225.0
+offset_bottom = 30.0
+size_flags_horizontal = 0
+theme = ExtResource("1_3alj1")
+script = ExtResource("2_v61h3")
+
+[node name="coefficient_value" type="HSlider" parent="."]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="coefficient_tag" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "a = 0"
+
+[connection signal="value_changed" from="coefficient_value" to="." method="_on_coefficient_value_value_changed"]

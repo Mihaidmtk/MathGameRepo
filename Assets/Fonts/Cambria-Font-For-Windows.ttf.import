@@ -14,10 +14,10 @@ dest_files=["res://.godot/imported/Cambria-Font-For-Windows.ttf-c6b138c8973f9099
 
 Rendering=null
 antialiasing=1
-generate_mipmaps=true
-multichannel_signed_distance_field=false
-msdf_pixel_range=8
-msdf_size=48
+generate_mipmaps=false
+multichannel_signed_distance_field=true
+msdf_pixel_range=10
+msdf_size=100
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
@@ -26,7 +26,7 @@ oversampling=2.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
-compress=true
+compress=false
 preload=[{
 "chars": [],
 "glyphs": [],

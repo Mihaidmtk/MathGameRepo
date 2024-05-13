@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdhnnb71btrlq"]
 
-[ext_resource type="Script" path="res://Scripts/line_trail.gd" id="1_3nhc6"]
+[ext_resource type="Script" path="res://Scripts/Old/line_trail.gd" id="1_8etw7"]
 
 [node name="trail" type="Line2D"]
 show_behind_parent = true
@@ -11,4 +11,4 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
-script = ExtResource("1_3nhc6")
+script = ExtResource("1_8etw7")
