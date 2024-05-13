@@ -34,8 +34,8 @@ var p2_defend : DefendLine
 
 var turn : int = 1
 
-var data : Array = [[[0, 0, 0, 0], [0, 0, 0, 0]],
-					[[0, 0, 0, 0], [0, 0, 0, 0]]]
+var data : Array = [[[0, 0, 0], [0, 0, 0]],
+					[[0, 0, 0], [0, 0, 0]]]
 					
 var available_func : Array = [[1, 1, 1, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 0]]
 
@@ -61,10 +61,12 @@ func _ready(): #line spawns and slider values
 	defend_slider_container.a_slider.value = 1
 	defend_slider_container.b_slider.value = 0
 	defend_slider_container.c_slider.value = -1
-
+	
+	
+	
 func _process(delta): #main loop
 	if turn == 0:
-		
+		disable_ui()
 		#create attacking/defending functions
 		if !p1_attack && !Global.p1_is_collided:
 			p1_attack = AttackLine.create()
@@ -80,6 +82,13 @@ func _process(delta): #main loop
 		if !p2_defend:
 			p2_defend = DefendLine.create()
 			defend_spawn_p2.add_child(p2_defend)
+		
+		if Global.p1_is_collided && Global.p2_is_collided:
+			p1_defend.queue_free()
+			p2_defend.queue_free()
+			enable_ui()
+			turn = 1
+		
 		
 		#move attacking/defending funtions
 		if !Global.p1_is_collided:
@@ -127,35 +136,27 @@ func _draw(): #drawing playing space and grid lines based on global variables
 				  Vector2(grid_size.x + border_offset.x, cell_size.y * line + border_offset.y), \
 				  color, width)
 
-
 func get_linear(x:float, a: int = 1) -> float:
 	var xo = x*(1/cell_size.x)
 	return (-a*xo) * cell_size.y
-
 func get_sqr(x:float, a:int = 1, b:int = 0):
 	var xo = x*(1/cell_size.x)
-	return (-a*pow(xo, 2) -b*xo) * cell_size.y
-	
+	return (-a*pow(xo, 2) -b*xo) * cell_size.y	
 func get_sqrt(x:float, a:int = 1):
 	var xo = x*(1/cell_size.x)
 	return (-a*sqrt(xo)) * cell_size.y
-
 func get_sin(x:float, a:int = 1):
 	var xo = x*(1/cell_size.x)
 	return (-a*sin(xo)) * cell_size.y
-	
 func get_cos(x:float, a:int = 1):
 	var xo = x*(1/cell_size.x)
 	return (-a*cos(xo)) * cell_size.y
-
 func get_log(x:float, a:int, b:int):
 	var xo = x*(1/cell_size.x)
 	return (-b*log(xo)/log(a)) * cell_size.y
-
 func get_expo(x:float, a:int, b:int):
 	var xo = x*(1/cell_size.x)
 	return (-b*pow(a, xo)) * cell_size.y
-
 func CreateFunction(x:float, id:int = 0, a:int = 1, b:int = 0) -> float:
 	if id == 1: return get_linear(x, a)
 	elif id == 2: return get_sqr(x, a, b)
@@ -200,10 +201,8 @@ func update_selects():
 func update_data():
 	data[0][turn - 1][1] = attack_slider_container.a_slider.value
 	data[0][turn - 1][2] = attack_slider_container.b_slider.value
-	data[0][turn - 1][3] = attack_slider_container.c_slider.value
 	data[1][turn - 1][1] = defend_slider_container.a_slider.value
 	data[1][turn - 1][2] = defend_slider_container.b_slider.value
-	data[1][turn - 1][3] = defend_slider_container.c_slider.value
 func reset_sliders():
 	attack_slider_container.a_slider.value = 1
 	attack_slider_container.b_slider.value = 0
@@ -212,3 +211,28 @@ func reset_sliders():
 	defend_slider_container.a_slider.value = 1
 	defend_slider_container.b_slider.value = 0
 	defend_slider_container.c_slider.value = -1
+	
+func disable_ui():
+	attack_select.disabled = true
+	defend_select.disabled = true
+	
+	for child in attack_slider_container.get_children():
+		if child is Slider: child.editable = false
+	
+	for child in defend_slider_container.get_children():
+		if child is Slider: child.editable = false
+		
+	$UI/Hp_Turn/End_Turn.disabled = true
+	
+func enable_ui():
+	attack_select.disabled = false
+	defend_select.disabled = false
+	
+	for child in attack_slider_container.get_children():
+		if child is Slider: child.editable = true
+	
+	for child in defend_slider_container.get_children():
+		if child is Slider: child.editable = true
+		
+	$UI/Hp_Turn/End_Turn.disabled = false
+	
