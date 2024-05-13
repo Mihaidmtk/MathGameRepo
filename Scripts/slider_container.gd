@@ -13,4 +13,3 @@ func _process(_delta):
 	a.text = "a=" + str(a_slider.value)
 	b.text = "b=" + str(b_slider.value)
 	c.text = "c=" + str(c_slider.value)
-	

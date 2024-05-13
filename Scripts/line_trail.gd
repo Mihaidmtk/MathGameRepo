@@ -6,7 +6,7 @@ class_name Trail
 
 var MAX_POINTS = 2000
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	position = get_parent().get_parent().position
 	curve.add_point(get_parent().position)
 	if curve.get_baked_points().size() > MAX_POINTS:

@@ -2,14 +2,12 @@ extends Control
 
 @export var dropdown_attack_path : NodePath
 @onready var dropdown_attack = get_node(dropdown_attack_path)
-@onready var attack_func = $"Func Selection/attack_func"
 
 @export var dropdown_defend_path : NodePath
 @onready var dropdown_defend = get_node(dropdown_defend_path)
-@onready var defend_func = $"Func Selection/defend_func"
 
-@onready var attack_slider_container = $"Func Selection/attack_func/attack_slider_container"
-@onready var defend_slider_container = $"Func Selection/defend_func/defend_slider_container"
+@onready var attack_slider_container = $"FuncSelection/attack_func/attack_slider_container"
+@onready var defend_slider_container = $"FuncSelection/defend_func/defend_slider_container"
 
 var attack_selected: int = 0
 var defend_selected: int = 0

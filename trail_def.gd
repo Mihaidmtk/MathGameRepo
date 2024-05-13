@@ -13,7 +13,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	position = get_parent().get_parent().position
 	curve.add_point(get_parent().position)
 	points = curve.get_baked_points()
@@ -29,7 +29,7 @@ func create_segment(p1 : Vector2, p2 : Vector2) -> CollisionShape2D:
 	collision.shape.b = p2
 	return collision
 	
-func clear_all_shape(keep_segments = false):
+func clear_all_shape():
 	for c in $collider.get_children():
 		c.queue_free()
 	
