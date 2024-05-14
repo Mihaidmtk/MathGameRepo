@@ -65,5 +65,5 @@ func _on_collider_area_entered(_area):
 	reset_function()
 	
 static func create() -> FunctionSpawner:
-	var scn = preload("res://Scenes/RemadeScenes/GameLogic/function_spawner.tscn")
+	var scn = preload("res://Scenes/RemadeScenes/GameLogic/function_spawner1.tscn")
 	return scn.instantiate()

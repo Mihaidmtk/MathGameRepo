@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwekmgp5kmwdw"]
+
+[ext_resource type="Script" path="res://Scripts/Old/miw_master_scene.gd" id="1_3bmrf"]
+
+[node name="miw_master_scene" type="Node2D"]
+script = ExtResource("1_3bmrf")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="functions_nput" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 16.2
+anchor_right = 28.775
+anchor_bottom = 16.2
+offset_top = -113.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="game_state" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 28.775
+anchor_right = 28.775
+offset_left = -145.0
+offset_bottom = 535.0
+grow_horizontal = 0

@@ -7,8 +7,8 @@ func _ready():
 	
 	limit_left = 0
 	limit_top = 0
-	limit_right = get_parent().cell_count.x * get_parent().cell_size.x + 200
-	limit_bottom = get_parent().cell_count.y * get_parent().cell_size.y + 200
+	limit_right = Global.cell_count.x * Global.cell_size.x + 200
+	limit_bottom = Global.cell_count.y * Global.cell_size.y + 200
 	
 func _process(delta):
 	direction = Vector2(0,0)

@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmdw2pj51gdm5"]
+[gd_scene load_steps=4 format=3 uid="uid://dmdw2pj51gdm5"]
 
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/main.gd" id="1_e118w"]
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/Camera2D.gd" id="2_eehnk"]
+[ext_resource type="PackedScene" uid="uid://dj2u83xifqsxx" path="res://Scenes/RemadeScenes/UI/ui.tscn" id="3_ft5pj"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_e118w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_eehnk")
+
+[node name="ui_layer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="ui_layer" instance=ExtResource("3_ft5pj")]

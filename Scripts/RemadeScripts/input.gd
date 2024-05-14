@@ -1,14 +1,14 @@
 extends HBoxContainer
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	update_function_selectors(4)
+	create_function_selectors(4)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
-func update_function_selectors(func_count : int):
+func create_function_selectors(func_count : int):
 	for child in get_children():
 		child.queue_free()
 	for idx in range(func_count):
@@ -21,3 +21,9 @@ func get_function_values() -> Array:
 	for child in get_children():
 		data.append(child.get_values())
 	return data
+	
+func update_sliders():
+	for selector in get_children():
+		if selector is FunctionSelector:
+			selector.set_slider_enabled()
+			selector.set_slider_range()

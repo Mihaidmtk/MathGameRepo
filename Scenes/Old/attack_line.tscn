@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6tibjk1s4p6e"]
 
 [ext_resource type="Script" path="res://Scripts/Old/attackline.gd" id="1_p2mma"]
-[ext_resource type="PackedScene" uid="uid://cdhnnb71btrlq" path="res://Scenes/Old/trail_att.tscn" id="2_3mm7v"]
+[ext_resource type="PackedScene" uid="uid://cdhnnb71btrlq" path="res://Scenes/Old/trail.tscn" id="2_3mm7v"]
 
 [node name="attack_line" type="Node2D"]
 script = ExtResource("1_p2mma")

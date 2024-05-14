@@ -33,3 +33,5 @@ layout_mode = 2
 [node name="slider_c" parent="." instance=ExtResource("1_34ri5")]
 custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
+
+[connection signal="item_selected" from="type" to="." method="_on_type_item_selected"]
