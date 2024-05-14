@@ -1,5 +1,4 @@
 extends Node2D
-class_name FunctionSpawner
 
 @onready var function_head = $function_head
 @onready var body = $function_head/body
@@ -10,16 +9,19 @@ class_name FunctionSpawner
 
 var segments : Array
 var should_update_shape := true
+var is_collided := false
+var type := 0
+var mode := 0
 var integrated := 0
 
 
 func _ready():
-	body.modulate = Color.REBECCA_PURPLE
-	body.top_level = true
-	body.position = position
+	pass
+	
 
 func _process(_delta):
 	pass
+	
 func update_function(x : float, y: float) -> void:
 	function_head.visible = true
 	function_head.position = Vector2(x,y)
@@ -35,7 +37,6 @@ func reset_function():
 	clear_all_shape()
 	function_head.visible = false
 	
-
 func create_segment(p1 : Vector2, p2 : Vector2) -> CollisionShape2D:
 	var collision = CollisionShape2D.new()
 	collision.shape = SegmentShape2D.new()
@@ -61,9 +62,35 @@ func update_collision_shape():
 func _on_timer_timeout():
 	should_update_shape = true
 
-func _on_collider_area_entered(_area):
-	reset_function()
+func _on_collider_area_entered(area):
+	if area.get_parent().get_parent() != get_parent():
+		if area.is_in_group("obstacle"):
+			reset_function()
+		elif mode == 0:
+			if area.mode == 1: reset_function()
+		elif mode == 1:
+			if area.mode == 2: reset_function()
+		elif mode == 2:
+			if area.mode == 0 or area.mode == 2: reset_function()
 	
-static func create() -> FunctionSpawner:
-	var scn = preload("res://Scenes/RemadeScenes/GameLogic/function_spawner1.tscn")
-	return scn.instantiate()
+func set_function(m:int, t:int):
+	top_level = true
+	if get_parent().player == 1:
+		position.x = Global.cell_size.x * 5
+	else: position.x = (Global.cell_count.x - 5) * Global.cell_size.x
+	position.y = Global.cell_count.y/2 * Global.cell_size.y
+	mode = m
+	type = t
+	body.top_level = true
+	body.position = position
+	is_collided = false
+	if m == 0: #Attack
+		body.modulate = Color("#FF37A1")
+		$collider.add_to_group("atac")
+	elif m == 1:
+		body.modulate = Color("#00DF9A")
+		$collider.add_to_group("apărare")
+	elif m == 2:
+		body.modulate = Color("#E1FF62")
+		$collider.add_to_group("recunoaștere")
+		

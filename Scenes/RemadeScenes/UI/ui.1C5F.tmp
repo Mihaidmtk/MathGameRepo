@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj2u83xifqsxx"]
+[gd_scene load_steps=9 format=3 uid="uid://dj2u83xifqsxx"]
 
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/ui.gd" id="1_gr0p4"]
 [ext_resource type="PackedScene" uid="uid://dt5t0lr1e2nky" path="res://Scenes/RemadeScenes/UI/input.tscn" id="1_t7y58"]
+[ext_resource type="Texture2D" uid="uid://3u0qrsbmi135" path="res://Assets/Sprites/clock.png" id="2_vb41x"]
+[ext_resource type="Texture2D" uid="uid://citq1gp0gm2t2" path="res://Assets/Sprites/clock_press.png" id="3_iqsyp"]
 [ext_resource type="Texture2D" uid="uid://da5adwsyu144x" path="res://Assets/Sprites/heart.png" id="4_oada0"]
 [ext_resource type="Texture2D" uid="uid://bwyqyju4rd6cq" path="res://Assets/Sprites/turn_indicator.png" id="5_novbt"]
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/Health.gd" id="5_qdkt2"]
@@ -34,6 +36,39 @@ offset_left = -287.0
 offset_top = -160.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="EndTurn" type="TextureButton" parent="game_state"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+anchor_left = 1.0
+anchor_top = 0.512
+anchor_right = 1.0
+anchor_bottom = 0.512
+offset_left = -114.0
+offset_top = -62.92
+offset_right = -14.0
+offset_bottom = 63.08
+grow_horizontal = 2
+texture_normal = ExtResource("2_vb41x")
+texture_pressed = ExtResource("3_iqsyp")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Turn" type="Label" parent="game_state/EndTurn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -24.0
+offset_right = 49.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Încheie Tura"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Health" type="Control" parent="game_state"]
 custom_minimum_size = Vector2(150, 50)
@@ -219,3 +254,5 @@ grow_vertical = 0
 text = " Rezolvare"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="button_up" from="game_state/EndTurn" to="." method="_on_end_turn_button_up"]

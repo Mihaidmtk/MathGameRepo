@@ -22,4 +22,5 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "a = 0"
 
+[connection signal="changed" from="coefficient_value" to="." method="_on_coefficient_value_changed"]
 [connection signal="value_changed" from="coefficient_value" to="." method="_on_coefficient_value_value_changed"]

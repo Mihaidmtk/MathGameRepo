@@ -1,15 +1,66 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmdw2pj51gdm5"]
+[gd_scene load_steps=7 format=3 uid="uid://dmdw2pj51gdm5"]
 
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/main.gd" id="1_e118w"]
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/Camera2D.gd" id="2_eehnk"]
 [ext_resource type="PackedScene" uid="uid://dj2u83xifqsxx" path="res://Scenes/RemadeScenes/UI/ui.tscn" id="3_ft5pj"]
+[ext_resource type="PackedScene" uid="uid://bkeuso3gm6cs4" path="res://Scenes/RemadeScenes/GameLogic/player.tscn" id="4_424iw"]
+[ext_resource type="Texture2D" uid="uid://3u0qrsbmi135" path="res://Assets/Sprites/clock.png" id="4_ybmaq"]
+[ext_resource type="Texture2D" uid="uid://citq1gp0gm2t2" path="res://Assets/Sprites/clock_press.png" id="5_vm2mw"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_e118w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 326)
 script = ExtResource("2_eehnk")
 
 [node name="ui_layer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="ui_layer" instance=ExtResource("3_ft5pj")]
+anchors_preset = -1
+anchor_right = 1.007
+offset_top = 0.0
+offset_right = -8.06409
+offset_bottom = 0.0
+
+[node name="EndTurn" type="TextureButton" parent="ui_layer/UI"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.88
+anchor_right = 1.0
+anchor_bottom = 0.88
+offset_left = -113.0
+offset_top = -63.2401
+offset_right = -13.0
+offset_bottom = 62.7599
+grow_horizontal = 2
+texture_normal = ExtResource("4_ybmaq")
+texture_pressed = ExtResource("5_vm2mw")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Turn" type="Label" parent="ui_layer/UI/EndTurn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -24.0
+offset_right = 49.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Încheie Tura"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player1" parent="." instance=ExtResource("4_424iw")]
+position = Vector2(51, 328)
+
+[node name="player2" parent="." instance=ExtResource("4_424iw")]
+position = Vector2(1104, 326)
+
+[connection signal="button_up" from="ui_layer/UI/EndTurn" to="." method="_on_end_turn_button_up"]

@@ -19,42 +19,55 @@ var slider_dict := {
 var unlocked := [1,1,1,1,1,0,0]
 
 var cell_size := Vector2(50, 50)
-var cell_count := Vector2(20, 20)
+var cell_count := Vector2(40, 20)
 
 var background_color := Color("052A59")
 var grid_color := Color("D93B92")
 var grid_color_accent := Color("#F2A0A0")
 var grid_color_div := Color("#F2388F")
 var border_color := Color("#8C2B86")
+var p1_color := Color("#04F570")
+var p2_color := Color("#04F570")
 
-var p1_functions : Array
-var p2_functions : Array
+var health := [3, 3]
+var functions_count := [3, 2]
+
+var turn := 1
 
 func get_linear(x: float, coeff := Vector3(0,0,0)) -> float:
-	var xo = x * 1/cell_size.x
-	return -(coeff.x * xo + coeff.y)*1/cell_size.y
+	return -(coeff.x * x + coeff.y)
 	
 func get_exponential(x: float, coeff := Vector3(0,0,0)) -> float:
-	var xo = x * 1/cell_size.x
-	return -(coeff.x * pow(xo, 2) + coeff.y * xo + coeff.z)*1/cell_size.y
+	return -(coeff.x * pow(x, 2) + coeff.y * x + coeff.z)
 	
 func get_sqrt(x: float, coeff := Vector3(0,0,0)) -> float:
-	var xo = x * 1/cell_size.x
-	return -(coeff.x * sqrt(xo) + coeff.y)*1/cell_size.y
+	return -(coeff.x * sqrt(x) + coeff.y)
 	
 func get_sin(x: float, coeff := Vector3(0,0,0)) -> float:
 	var xo = x * 1/cell_size.x
-	return -(coeff.x * sin(xo) + coeff.y)*1/cell_size.y
+	return -(coeff.x * sin(xo) + coeff.y)
 	
 func get_cos(x: float, coeff := Vector3(0,0,0)) -> float:
 	var xo = x * 1/cell_size.x
-	return -(coeff.x * cos(xo) + coeff.y)*1/cell_size.y
+	return -(coeff.x * cos(xo) + coeff.y)
 	
 func get_variable(x: float, coeff := Vector3(0,0,0)) -> float:
-	var xo = x * 1/cell_size.x
 	var aux_b = coeff.y
 	var aux_c = coeff.z
 	if coeff.y > coeff.z:
 		aux_b = coeff.z
 		aux_c = coeff.y
-	return -(coeff.x * xo + coeff.y)*1/cell_size.y
+	if -coeff.x*x > aux_b and -coeff.x*x < aux_c:
+		return (-(coeff.x * x) + aux_b)
+	else:
+		return ((coeff.x * x) - aux_c)
+
+func Function(x:float, type:int, coeff:Vector3) -> float:
+	var xo = x * 1/cell_size.x
+	if type == 1: return get_linear(xo, coeff) * cell_size.y
+	elif type == 2: return get_exponential(xo, coeff) * cell_size.y
+	elif type == 3: return get_sqrt(xo, coeff) * cell_size.y
+	elif type == 4: return get_sin(xo, coeff) * cell_size.y
+	elif type == 5: return get_cos(xo, coeff) * cell_size.y
+	elif type == 6: return get_variable(xo, coeff) * cell_size.y
+	else: return 0
