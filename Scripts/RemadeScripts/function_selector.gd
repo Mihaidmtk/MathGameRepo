@@ -7,7 +7,7 @@ extends VBoxContainer
 @onready var mode = $mode
 @onready var trajectory = $trajectory_spawn/trajectory
 
-var settings_changed := false
+var settings_changed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +26,6 @@ func _process(_delta):
 	if settings_changed:
 		settings_changed = false
 		trajectory.update_trajectory(type.selected, get_values()[2])
-	pass
 func get_values() -> Array:
 	var data : Array = [type.selected, mode.selected, Vector3(slider_a.get_value(), slider_b.get_value(), slider_c.get_value())]
 	return data
