@@ -3,12 +3,12 @@ extends Camera2D
 var CAMERA_SPEED := 400
 var direction := Vector2(0,0)
 
-var camera_size := Vector2(1152, 648)
+var camera_size := Vector2(1920, 1080)
 
 var camera_limit_left = camera_size.x/2
-var camera_limit_top = camera_size.y/2
+var camera_limit_top = camera_size.y/2 - 170
 var camera_limit_right = Global.cell_count.x * Global.cell_size.x - camera_size.x/2 
-var camera_limit_bottom = Global.cell_count.y * Global.cell_size.y -camera_size.y/2 + 180
+var camera_limit_bottom = Global.cell_count.y * Global.cell_size.y -camera_size.y/2
 
 func _ready():
 	pass

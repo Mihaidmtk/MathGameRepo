@@ -18,7 +18,11 @@ var slider_dict := {
 	6 : [1, 1, 1]}
 var unlocked := [1,1,1,1,1,0,0]
 
-var cell_size := Vector2(50, 50)
+var slider_ranges := {
+	1: 0
+}
+
+var cell_size := Vector2(100, 100)
 var cell_count := Vector2(40, 20)
 
 var background_color := Color("052A59")
@@ -44,12 +48,10 @@ func get_sqrt(x: float, coeff := Vector3(0,0,0)) -> float:
 	return -(coeff.x * sqrt(x) + coeff.y)
 	
 func get_sin(x: float, coeff := Vector3(0,0,0)) -> float:
-	var xo = x * 1/cell_size.x
-	return -(coeff.x * sin(xo) + coeff.y)
+	return -(coeff.x * sin(x) + coeff.y)
 	
 func get_cos(x: float, coeff := Vector3(0,0,0)) -> float:
-	var xo = x * 1/cell_size.x
-	return -(coeff.x * cos(xo) + coeff.y)
+	return -(coeff.x * cos(x) + coeff.y)
 	
 func get_variable(x: float, coeff := Vector3(0,0,0)) -> float:
 	var aux_b = coeff.y

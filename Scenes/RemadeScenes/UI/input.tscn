@@ -4,13 +4,16 @@
 
 [node name="input" type="HBoxContainer"]
 custom_minimum_size = Vector2(750, 160)
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -160.0
-offset_right = -402.0
+anchors_preset = -1
+anchor_left = 0.998
+anchor_top = 0.003
+anchor_right = 0.998
+anchor_bottom = 0.003
+offset_left = -749.16
+offset_top = -0.24
+offset_right = 0.839966
+offset_bottom = 206.76
 grow_horizontal = 2
 grow_vertical = 0
-alignment = 1
+alignment = 2
 script = ExtResource("1_1aoim")

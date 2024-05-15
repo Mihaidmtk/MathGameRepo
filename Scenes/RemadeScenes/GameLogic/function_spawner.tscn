@@ -25,9 +25,15 @@ end_cap_mode = 2
 antialiased = true
 
 [node name="Timer" type="Timer" parent="function_head/body"]
-wait_time = 0.1
+wait_time = 0.2
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="function_head"]
+remote_path = NodePath("../../collider/CollisionShape2D")
 
 [node name="collider" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collider"]
 shape = SubResource("CircleShape2D_ldryw")
+
+[connection signal="timeout" from="function_head/body/Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="collider" to="." method="_on_collider_area_entered"]

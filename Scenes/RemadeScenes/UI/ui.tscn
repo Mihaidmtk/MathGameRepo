@@ -7,49 +7,32 @@
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/Health.gd" id="5_qdkt2"]
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/arrow.gd" id="7_xc0hr"]
 
-[node name="UI" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+[node name="UI" type="Panel"]
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
+offset_right = 500.0
+offset_bottom = -915.0
 grow_vertical = 2
 script = ExtResource("1_gr0p4")
 
-[node name="input" parent="." instance=ExtResource("1_t7y58")]
+[node name="game_state" type="HBoxContainer" parent="."]
 layout_mode = 1
-offset_top = 0.0
-offset_right = -287.0
+offset_left = 157.385
+offset_right = 1113.39
+offset_bottom = 165.0
 
-[node name="game_state" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -287.0
-offset_top = -160.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="Control" type="VBoxContainer" parent="game_state"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+alignment = 1
 
-[node name="Health" type="Control" parent="game_state"]
+[node name="Health" type="Control" parent="game_state/Control"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-anchors_preset = 0
-anchor_left = 0.04
-anchor_top = 0.119
-anchor_right = 0.04
-anchor_bottom = 0.119
-offset_left = -0.0800018
-offset_top = -0.0400009
-offset_right = 149.92
-offset_bottom = 49.96
 script = ExtResource("5_qdkt2")
 
-[node name="heart_1" type="TextureRect" parent="game_state/Health"]
+[node name="heart_1" type="TextureRect" parent="game_state/Control/Health"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -62,7 +45,7 @@ texture = ExtResource("4_oada0")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="heart_2" type="TextureRect" parent="game_state/Health"]
+[node name="heart_2" type="TextureRect" parent="game_state/Control/Health"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -79,7 +62,7 @@ texture = ExtResource("4_oada0")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="heart_3" type="TextureRect" parent="game_state/Health"]
+[node name="heart_3" type="TextureRect" parent="game_state/Control/Health"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -95,29 +78,19 @@ texture = ExtResource("4_oada0")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="turns" type="Control" parent="game_state"]
+[node name="turns" type="Control" parent="game_state/Control"]
 custom_minimum_size = Vector2(150, 69)
-layout_mode = 1
-anchor_left = 0.04
-anchor_top = 0.906
-anchor_right = 0.04
-anchor_bottom = 0.906
-offset_left = -0.0800018
-offset_top = -69.96
-offset_right = 149.92
-offset_bottom = -0.960007
-grow_vertical = 2
+layout_mode = 2
 
-[node name="Arrow" type="Control" parent="game_state/turns"]
+[node name="Arrow" type="Control" parent="game_state/Control/turns"]
 custom_minimum_size = Vector2(50, 69)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 50.0
 grow_vertical = 2
 script = ExtResource("7_xc0hr")
 
-[node name="indicator_1" type="TextureRect" parent="game_state/turns/Arrow"]
+[node name="indicator_1" type="TextureRect" parent="game_state/Control/turns/Arrow"]
 custom_minimum_size = Vector2(25, 23)
 layout_mode = 1
 anchors_preset = 5
@@ -130,7 +103,7 @@ texture = ExtResource("5_novbt")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="indicator_2" type="TextureRect" parent="game_state/turns/Arrow"]
+[node name="indicator_2" type="TextureRect" parent="game_state/Control/turns/Arrow"]
 custom_minimum_size = Vector2(25, 23)
 layout_mode = 1
 anchors_preset = 8
@@ -147,7 +120,7 @@ texture = ExtResource("5_novbt")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="indicator_3" type="TextureRect" parent="game_state/turns/Arrow"]
+[node name="indicator_3" type="TextureRect" parent="game_state/Control/turns/Arrow"]
 custom_minimum_size = Vector2(25, 23)
 layout_mode = 1
 anchors_preset = 7
@@ -163,7 +136,7 @@ texture = ExtResource("5_novbt")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Tags" type="Control" parent="game_state/turns"]
+[node name="Tags" type="Control" parent="game_state/Control/turns"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 1
 anchors_preset = 11
@@ -174,7 +147,7 @@ offset_left = -125.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="tag_1" type="Label" parent="game_state/turns/Tags"]
+[node name="tag_1" type="Label" parent="game_state/Control/turns/Tags"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -187,7 +160,7 @@ text = "Jucătorul 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="tag_2" type="Label" parent="game_state/turns/Tags"]
+[node name="tag_2" type="Label" parent="game_state/Control/turns/Tags"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -204,7 +177,7 @@ text = "Jucătorul 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="tag_3" type="Label" parent="game_state/turns/Tags"]
+[node name="tag_3" type="Label" parent="game_state/Control/turns/Tags"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -216,6 +189,12 @@ offset_top = -23.0
 offset_right = 52.5
 grow_horizontal = 2
 grow_vertical = 0
-text = " Rezolvare"
+text = " Simulare"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="input" parent="game_state" instance=ExtResource("1_t7y58")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+alignment = 0

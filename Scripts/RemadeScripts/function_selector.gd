@@ -31,7 +31,7 @@ func set_function_types():
 		type.add_item(Global.functions_dict[idx], idx)
 		type.set_item_disabled(idx, !Global.unlocked[idx])
 	
-func set_slider_range():
+func set_sliders_range():
 	pass
 
 func set_sliders_enabled():
@@ -41,4 +41,5 @@ func set_sliders_enabled():
 
 func _on_type_item_selected(_index):
 	set_sliders_enabled()
+	set_sliders_range()
 

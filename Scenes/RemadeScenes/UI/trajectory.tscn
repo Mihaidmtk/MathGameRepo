@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://btm0b0nobftos"]
+[gd_scene load_steps=3 format=3 uid="uid://btm0b0nobftos"]
 
+[ext_resource type="Texture2D" uid="uid://368nn2dbfnk6" path="res://Assets/Sprites/trt_texture2.png" id="1_b4tpc"]
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/trajectory.gd" id="1_tjmtm"]
 
 [node name="trajectory" type="Line2D"]
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
+width = 20.0
+texture = ExtResource("1_b4tpc")
+texture_mode = 1
 antialiased = true
 script = ExtResource("1_tjmtm")

@@ -6,13 +6,16 @@ func _ready():
 	pass
 	
 func create_function_selectors(func_count):
-	for selector in get_children():
-		selector.queue_free()
+	clear_selectors()
 	for idx in range(func_count):
 		var scn = FunctionSelector.instantiate()
 		add_child(scn)
 		get_child(idx).name = "funcion_selector_" + str(idx)
 
+func clear_selectors():
+	for selector in get_children():
+		selector.queue_free()
+		
 func get_function_values() -> Array:
 	var data := []
 	for child in get_children():

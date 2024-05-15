@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvxin03sc24ho"]
+
+[ext_resource type="Script" path="res://Scripts/test.gd" id="1_4ohrb"]
+[ext_resource type="PackedScene" uid="uid://m5t63qv3eww1" path="res://Scenes/RemadeScenes/GameLogic/function_spawner.tscn" id="1_u7nqn"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wcyev"]
+a = Vector2(0, -101)
+b = Vector2(0, 115)
+
+[node name="test" type="Node2D"]
+script = ExtResource("1_4ohrb")
+
+[node name="function_spawner" parent="." instance=ExtResource("1_u7nqn")]
+position = Vector2(285, 245)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(352, 245)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_wcyev")
