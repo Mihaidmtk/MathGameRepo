@@ -5,7 +5,7 @@ var FunctionSelector = preload("res://Scenes/RemadeScenes/UI/function_selector.t
 func _ready():
 	pass
 	
-func create_function_selectors(func_count : int):
+func create_function_selectors(func_count):
 	for selector in get_children():
 		selector.queue_free()
 	for idx in range(func_count):

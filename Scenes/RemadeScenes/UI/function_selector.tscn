@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://6lpaj8p1u5n2"]
+[gd_scene load_steps=3 format=3 uid="uid://6lpaj8p1u5n2"]
 
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/function_selector.gd" id="1_pwwyk"]
 [ext_resource type="PackedScene" uid="uid://d08kerqe4rgvp" path="res://Scenes/RemadeScenes/UI/slider.tscn" id="2_5wgli"]
-[ext_resource type="Script" path="res://Scripts/trajectory.gd" id="3_aiubp"]
-[ext_resource type="Script" path="res://Scripts/RemadeScripts/trajectory_spawn.gd" id="3_riwrx"]
 
 [node name="function_selector" type="VBoxContainer"]
 custom_minimum_size = Vector2(205, 160)
@@ -36,14 +34,4 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
 
-[node name="trajectory_spawn" type="Node2D" parent="."]
-top_level = true
-script = ExtResource("3_riwrx")
-
-[node name="trajectory" type="Line2D" parent="trajectory_spawn"]
-script = ExtResource("3_aiubp")
-
 [connection signal="item_selected" from="type" to="." method="_on_type_item_selected"]
-[connection signal="slider_changed" from="slider_a" to="." method="_on_slider_a_slider_changed"]
-[connection signal="slider_changed" from="slider_b" to="." method="_on_slider_b_slider_changed"]
-[connection signal="slider_changed" from="slider_c" to="." method="_on_slider_c_slider_changed"]

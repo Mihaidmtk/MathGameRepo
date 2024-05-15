@@ -5,9 +5,6 @@ extends VBoxContainer
 @onready var slider_c = $slider_c
 @onready var type = $type
 @onready var mode = $mode
-@onready var trajectory = $trajectory_spawn/trajectory
-
-var settings_changed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,9 +20,8 @@ func _ready():
 	mode.add_item("recunoaștere")
 	
 func _process(_delta):
-	if settings_changed:
-		settings_changed = false
-		trajectory.update_trajectory(type.selected, get_values()[2])
+	pass
+	
 func get_values() -> Array:
 	var data : Array = [type.selected, mode.selected, Vector3(slider_a.get_value(), slider_b.get_value(), slider_c.get_value())]
 	return data
@@ -44,15 +40,5 @@ func set_sliders_enabled():
 	slider_c.set_slider_enabled(Global.slider_dict[type.selected][2])
 
 func _on_type_item_selected(_index):
-	settings_changed = true
 	set_sliders_enabled()
 
-
-func _on_slider_a_slider_changed():
-	settings_changed = true
-
-func _on_slider_b_slider_changed():
-	settings_changed = true
-
-func _on_slider_c_slider_changed():
-	settings_changed = true

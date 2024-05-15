@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmdw2pj51gdm5"]
+[gd_scene load_steps=8 format=3 uid="uid://dmdw2pj51gdm5"]
 
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/main.gd" id="1_e118w"]
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/Camera2D.gd" id="2_eehnk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bkeuso3gm6cs4" path="res://Scenes/RemadeScenes/GameLogic/player.tscn" id="4_424iw"]
 [ext_resource type="Texture2D" uid="uid://3u0qrsbmi135" path="res://Assets/Sprites/clock.png" id="4_ybmaq"]
 [ext_resource type="Texture2D" uid="uid://citq1gp0gm2t2" path="res://Assets/Sprites/clock_press.png" id="5_vm2mw"]
+[ext_resource type="Script" path="res://Scripts/RemadeScripts/trajectory_spawner.gd" id="7_ultky"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_e118w")
@@ -62,5 +63,8 @@ position = Vector2(51, 328)
 
 [node name="player2" parent="." instance=ExtResource("4_424iw")]
 position = Vector2(1104, 326)
+
+[node name="trajectories" type="Node2D" parent="."]
+script = ExtResource("7_ultky")
 
 [connection signal="button_up" from="ui_layer/UI/EndTurn" to="." method="_on_end_turn_button_up"]
