@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmdw2pj51gdm5"]
+[gd_scene load_steps=17 format=3 uid="uid://dmdw2pj51gdm5"]
 
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/main.gd" id="1_e118w"]
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/Camera2D.gd" id="2_eehnk"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/trajectory_spawner.gd" id="7_ultky"]
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/bonudaries.gd" id="9_dtg2k"]
 [ext_resource type="PackedScene" uid="uid://dnckik5a5pnp5" path="res://Scenes/RemadeScenes/GameLogic/fow.tscn" id="10_pp5hr"]
+[ext_resource type="Script" path="res://Scripts/RemadeScripts/obstacle_layer.gd" id="11_qcbl3"]
+[ext_resource type="PackedScene" uid="uid://bnga8ltw1a2ag" path="res://Scenes/RemadeScenes/obstacle.tscn" id="12_pm1eg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8cxsc"]
 normal = Vector2(1, 0)
@@ -104,12 +106,16 @@ shape = SubResource("WorldBoundaryShape2D_62hcx")
 shape = SubResource("WorldBoundaryShape2D_2m6am")
 
 [node name="fow_layer" type="Node2D" parent="."]
-z_index = 15
 
 [node name="fow1" parent="fow_layer" instance=ExtResource("10_pp5hr")]
 player = 1
 
 [node name="fow2" parent="fow_layer" instance=ExtResource("10_pp5hr")]
 player = 2
+
+[node name="obstacle_layer" type="Node2D" parent="."]
+script = ExtResource("11_qcbl3")
+
+[node name="obstacle" parent="obstacle_layer" instance=ExtResource("12_pm1eg")]
 
 [connection signal="button_up" from="ui_layer/Control/UI/EndTurn" to="." method="_on_end_turn_button_up"]

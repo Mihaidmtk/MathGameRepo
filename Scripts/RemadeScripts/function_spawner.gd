@@ -11,7 +11,7 @@ class_name FunctionSpawner
 var segments : Array
 var should_update_shape := true
 var is_collided := false
-var player
+var player :int
 var type := 4
 var mode := 0
 var coeff := Vector3(1,0,0)

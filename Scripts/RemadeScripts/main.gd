@@ -7,7 +7,6 @@ extends Node2D
 @onready var camera = $Camera2D
 @onready var end_turn = $ui_layer/Control/UI/EndTurn
 @onready var ui_layer = $ui_layer
-@onready var fow_layer = $fow_layer
 
 var func_spawner := preload("res://Scenes/RemadeScenes/GameLogic/function_spawner.tscn")
 
@@ -17,9 +16,9 @@ var p2_sim_functions : Array
 var sim_time : float
 var SIM_SPEED = 200
 func _ready():
+	ui_layer.visible=true
 	$fow_layer/fow1.visible = true
 	$fow_layer/fow2.visible = false
-	ui_layer.visible=true
 	trajectories.create_trajectories()
 	ui.health.update_health_ui(Global.health[0])
 	camera.position = Vector2(camera.camera_limit_left, (camera.camera_limit_top + camera.camera_limit_bottom)/2)
@@ -79,8 +78,7 @@ func _on_end_turn_button_up():
 	Global.turn += 1
 	
 	if Global.turn % 3 == 1:
-		fow_layer.visible = true
-		$fow_layer/fow1.visible = true
+		$fow_layer/fow1.visible = true 
 		$fow_layer/fow2.visible = false
 		trajectories.create_trajectories()
 		ui.health.update_health_ui(Global.health[0])
@@ -100,7 +98,8 @@ func _on_end_turn_button_up():
 		ui.input.create_function_selectors(Global.functions_count[1])
 		$ui_layer/Control/UI/EndTurn/Turn.text = "Confirmă Alegeri"
 	else:
-		fow_layer.visible = false
+		$fow_layer/fow1.visible = false
+		$fow_layer/fow2.visible = false
 		camera.zoom = Vector2(0.4, 0.4)
 		camera.position = Vector2(Global.cell_count*Global.cell_size/2)
 		ui_layer.visible=false
