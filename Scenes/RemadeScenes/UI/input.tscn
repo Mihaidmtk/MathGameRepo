@@ -15,5 +15,4 @@ offset_right = 0.839966
 offset_bottom = 206.76
 grow_horizontal = 2
 grow_vertical = 0
-alignment = 2
 script = ExtResource("1_1aoim")

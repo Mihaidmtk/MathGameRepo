@@ -16,11 +16,11 @@ custom_minimum_size = Vector2(140, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+step = 0.1
 
 [node name="coefficient_tag" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "a = 0"
 
-[connection signal="changed" from="coefficient_value" to="." method="_on_coefficient_value_changed"]
 [connection signal="value_changed" from="coefficient_value" to="." method="_on_coefficient_value_value_changed"]

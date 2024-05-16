@@ -29,10 +29,12 @@ func get_values() -> Array:
 func set_function_types():
 	for idx in Global.functions_dict.size():
 		type.add_item(Global.functions_dict[idx], idx)
-		type.set_item_disabled(idx, !Global.unlocked[idx])
+		type.set_item_disabled(idx, !Global.unlocked[Global.turn%3 - 1][idx])
 	
 func set_sliders_range():
-	pass
+	slider_a.set_range(Global.slider_ranges[type.selected][0][0], Global.slider_ranges[type.selected][0][1])
+	slider_b.set_range(Global.slider_ranges[type.selected][1][0], Global.slider_ranges[type.selected][1][1])
+	slider_c.set_range(Global.slider_ranges[type.selected][2][0], Global.slider_ranges[type.selected][2][1])
 
 func set_sliders_enabled():
 	slider_a.set_slider_enabled(Global.slider_dict[type.selected][0])

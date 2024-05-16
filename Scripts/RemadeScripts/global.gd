@@ -6,8 +6,7 @@ var functions_dict := {
  2 : "ax^2 + bx + c",
  3 : "a*sqrt(x) + b",
  4 : "a*sin(x) + b",
- 5 : "a*cos(x) + b",
- 6 : "ax, x:(b, c)"}
+ 5 : "a*cos(x) + b",}
 var slider_dict := {
 	0 : [0, 0, 0],
 	1 : [1, 1, 0],
@@ -15,11 +14,17 @@ var slider_dict := {
 	3 : [1, 1, 0],
 	4 : [1, 1, 0],
 	5 : [1, 1, 0],
-	6 : [1, 1, 1]}
-var unlocked := [1,1,1,1,1,0,0]
+}
+	
+var unlocked := [[1,1,0,0,0,0],[1,1,0,0,0,0]]
 
 var slider_ranges := {
-	1: 0
+	1:[[-2,2],[-14,14],[0,0]],
+	2:[[-1,1], [-5,5], [-14,14]],
+	3:[[4,14], [0,0],[0,0]],
+	4:[[5,14], [0,0],[0,0]],
+	5:[[4,14], [0,0],[0,0]],
+	6:[[0,10],[-1,1], [0,0]]
 }
 
 var cell_size := Vector2(80, 80)
@@ -35,7 +40,7 @@ var p2_color := Color("#04F570")
 
 var health := [3, 3]
 var functions_count := [3, 2]
-
+var max_func_count := 5
 var turn := 1
 
 func get_linear(x: float, coeff := Vector3(0,0,0)) -> float:
@@ -53,16 +58,8 @@ func get_sin(x: float, coeff := Vector3(0,0,0)) -> float:
 func get_cos(x: float, coeff := Vector3(0,0,0)) -> float:
 	return -(coeff.x * cos(x) + coeff.y)
 	
-func get_variable(x: float, coeff := Vector3(0,0,0)) -> float:
-	var aux_b = coeff.y
-	var aux_c = coeff.z
-	if coeff.y > coeff.z:
-		aux_b = coeff.z
-		aux_c = coeff.y
-	if -coeff.x*x > aux_b and -coeff.x*x < aux_c:
-		return (-(coeff.x * x) + aux_b)
-	else:
-		return ((coeff.x * x) - aux_c)
+func get_log(x: float, coeff := Vector3(0,0,0)) -> float:
+	return -coeff.y*(log(x)/log(coeff.x))
 
 func Function(x:float, type:int, coeff:Vector3) -> float:
 	var xo = x * 1/cell_size.x
@@ -71,5 +68,5 @@ func Function(x:float, type:int, coeff:Vector3) -> float:
 	elif type == 3: return get_sqrt(xo, coeff) * cell_size.y
 	elif type == 4: return get_sin(xo, coeff) * cell_size.y
 	elif type == 5: return get_cos(xo, coeff) * cell_size.y
-	elif type == 6: return get_variable(xo, coeff) * cell_size.y
+	elif type == 6: return get_log(xo, coeff) * cell_size.y
 	else: return 0

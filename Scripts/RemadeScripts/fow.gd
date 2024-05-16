@@ -19,5 +19,5 @@ func _ready():
 					c.player = 2
 					add_child(c)
 	pass # Replace with function body.
-func _process(delta):
+func _process(_delta):
 	pass

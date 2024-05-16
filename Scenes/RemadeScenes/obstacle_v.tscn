@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://gj6j5rpquna4"]
+
+[ext_resource type="Script" path="res://Scripts/RemadeScripts/obstacle.gd" id="1_61b6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1lwe"]
+size = Vector2(40, 160)
+
+[node name="obstacle_v" type="Node2D"]
+rotation = 1.5708
+script = ExtResource("1_61b6j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(40, 160)
+offset_left = -20.0
+offset_top = -80.0
+offset_right = 20.0
+offset_bottom = 80.0
+color = Color(0.862745, 0.0117647, 0.0117647, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["obstacle"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_x1lwe")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

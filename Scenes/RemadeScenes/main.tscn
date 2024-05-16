@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/bonudaries.gd" id="9_dtg2k"]
 [ext_resource type="PackedScene" uid="uid://dnckik5a5pnp5" path="res://Scenes/RemadeScenes/GameLogic/fow.tscn" id="10_pp5hr"]
 [ext_resource type="Script" path="res://Scripts/RemadeScripts/obstacle_layer.gd" id="11_qcbl3"]
-[ext_resource type="PackedScene" uid="uid://bnga8ltw1a2ag" path="res://Scenes/RemadeScenes/obstacle.tscn" id="12_pm1eg"]
+[ext_resource type="Theme" uid="uid://bshwjs5xclbni" path="res://Assets/my_theme.tres" id="12_e5xyk"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8cxsc"]
 normal = Vector2(1, 0)
@@ -105,7 +105,11 @@ shape = SubResource("WorldBoundaryShape2D_62hcx")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="bonudaries/Area2D"]
 shape = SubResource("WorldBoundaryShape2D_2m6am")
 
+[node name="obstacle_layer" type="Node2D" parent="."]
+script = ExtResource("11_qcbl3")
+
 [node name="fow_layer" type="Node2D" parent="."]
+visible = false
 
 [node name="fow1" parent="fow_layer" instance=ExtResource("10_pp5hr")]
 player = 1
@@ -113,9 +117,119 @@ player = 1
 [node name="fow2" parent="fow_layer" instance=ExtResource("10_pp5hr")]
 player = 2
 
-[node name="obstacle_layer" type="Node2D" parent="."]
-script = ExtResource("11_qcbl3")
+[node name="exit" type="CanvasLayer" parent="."]
+layer = 6
+visible = false
 
-[node name="obstacle" parent="obstacle_layer" instance=ExtResource("12_pm1eg")]
+[node name="ColorRect" type="ColorRect" parent="exit"]
+custom_minimum_size = Vector2(8000, 8000)
+offset_left = -2912.0
+offset_top = -3160.0
+offset_right = 5088.0
+offset_bottom = 4840.0
+color = Color(0.0196078, 0.164706, 0.34902, 1)
+
+[node name="da" type="Button" parent="exit"]
+offset_left = 368.0
+offset_top = 344.0
+offset_right = 817.0
+offset_bottom = 457.0
+theme = ExtResource("12_e5xyk")
+theme_override_font_sizes/font_size = 88
+text = "da
+"
+
+[node name="nu" type="Button" parent="exit"]
+offset_left = 888.0
+offset_top = 344.0
+offset_right = 1337.0
+offset_bottom = 457.0
+theme = ExtResource("12_e5xyk")
+theme_override_font_sizes/font_size = 88
+text = "nu
+"
+
+[node name="Label" type="Label" parent="exit"]
+offset_left = 696.0
+offset_top = 224.0
+offset_right = 997.0
+offset_bottom = 296.0
+theme = ExtResource("12_e5xyk")
+theme_override_font_sizes/font_size = 60
+text = "Ieși din joc?"
+
+[node name="player1turn" type="CanvasLayer" parent="."]
+layer = 4
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="player1turn"]
+custom_minimum_size = Vector2(8000, 8000)
+offset_left = -2912.0
+offset_top = -3160.0
+offset_right = 5088.0
+offset_bottom = 4840.0
+color = Color(0.0196078, 0.164706, 0.34902, 1)
+
+[node name="p1_turn" type="Button" parent="player1turn"]
+offset_left = 368.0
+offset_top = 344.0
+offset_right = 817.0
+offset_bottom = 457.0
+theme = ExtResource("12_e5xyk")
+theme_override_font_sizes/font_size = 88
+text = "Continuă"
+
+[node name="Label" type="Label" parent="player1turn/p1_turn"]
+layout_mode = 0
+offset_top = -48.0
+offset_right = 309.0
+theme_override_font_sizes/font_size = 40
+text = "Tura Jucătorului 1"
+
+[node name="player2turn" type="CanvasLayer" parent="."]
+layer = 4
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="player2turn"]
+custom_minimum_size = Vector2(8000, 8000)
+offset_left = -2912.0
+offset_top = -3160.0
+offset_right = 5088.0
+offset_bottom = 4840.0
+color = Color(0.0196078, 0.164706, 0.34902, 1)
+
+[node name="p2_turn" type="Button" parent="player2turn"]
+offset_left = 368.0
+offset_top = 344.0
+offset_right = 817.0
+offset_bottom = 457.0
+theme = ExtResource("12_e5xyk")
+theme_override_font_sizes/font_size = 88
+text = "Continuă"
+
+[node name="Label" type="Label" parent="player2turn/p2_turn"]
+layout_mode = 0
+offset_top = -48.0
+offset_right = 309.0
+theme_override_font_sizes/font_size = 40
+text = "Tura Jucătorului 2"
+
+[node name="winner" type="Label" parent="."]
+visible = false
+offset_left = 840.0
+offset_top = 440.0
+offset_right = 880.0
+offset_bottom = 463.0
+theme = ExtResource("12_e5xyk")
+theme_override_font_sizes/font_size = 60
+text = "Jucătorul 1 a câștigat"
+
+[node name="return" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="button_up" from="ui_layer/Control/UI/EndTurn" to="." method="_on_end_turn_button_up"]
+[connection signal="pressed" from="exit/da" to="." method="_on_da_pressed"]
+[connection signal="pressed" from="exit/nu" to="." method="_on_nu_pressed"]
+[connection signal="pressed" from="player1turn/p1_turn" to="." method="_on_p_1_turn_pressed"]
+[connection signal="pressed" from="player2turn/p2_turn" to="." method="_on_p_2_turn_pressed"]
+[connection signal="timeout" from="return" to="." method="_on_return_timeout"]

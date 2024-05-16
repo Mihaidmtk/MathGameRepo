@@ -5,6 +5,7 @@ extends Control
 @onready var input = $game_state/input
 
 
+
 func _ready():
 	pass
 func _process(_delta):

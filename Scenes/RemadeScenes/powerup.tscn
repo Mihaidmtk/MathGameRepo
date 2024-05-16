@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca3oljavkuhfa"]
+
+[ext_resource type="Script" path="res://Scripts/RemadeScripts/powerup.gd" id="1_au477"]
+[ext_resource type="Texture2D" uid="uid://bu38666uii57y" path="res://Assets/Sprites/powerup@4x.png" id="2_7d8gv"]
+[ext_resource type="Theme" uid="uid://bshwjs5xclbni" path="res://Assets/my_theme.tres" id="3_fl7ix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hc7u6"]
+size = Vector2(50.9117, 50.9117)
+
+[node name="powerup" type="Node2D"]
+script = ExtResource("1_au477")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.235294, 0.235294)
+texture = ExtResource("2_7d8gv")
+
+[node name="Area2D" type="Area2D" parent="." groups=["powerup"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_hc7u6")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+z_index = 50
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -33.0
+offset_right = 163.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_fl7ix")
+theme_override_font_sizes/font_size = 54
+text = "sample text, sample text"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

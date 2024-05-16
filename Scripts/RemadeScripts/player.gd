@@ -20,8 +20,8 @@ func create_sim_function_spawner(mode : int):
 		sim_spawners.add_child(spawner)
 
 func clear_sim_function():
-	for spawner in get_children():
-		if spawner is FunctionSpawner and spawner.type != 1:
+	for spawner in sim_spawners.get_children():
+		if spawner is FunctionSpawner:
 			spawner.queue_free()
 
 func is_all_collided():

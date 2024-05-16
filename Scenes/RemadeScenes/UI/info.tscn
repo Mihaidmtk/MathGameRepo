@@ -1,0 +1,164 @@
+[gd_scene load_steps=4 format=3 uid="uid://kuet0iu76iic"]
+
+[ext_resource type="Theme" uid="uid://bshwjs5xclbni" path="res://Assets/my_theme.tres" id="1_7mg2u"]
+[ext_resource type="Script" path="res://Scripts/RemadeScripts/info.gd" id="2_dvegm"]
+[ext_resource type="Texture2D" uid="uid://bu38666uii57y" path="res://Assets/Sprites/powerup@4x.png" id="2_ru0ol"]
+
+[node name="info" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7mg2u")
+script = ExtResource("2_dvegm")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 141.0
+offset_right = 354.0
+offset_bottom = 298.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -78.5
+offset_right = 250.0
+offset_bottom = 78.5
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "     Comenzi:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "W : sus"
+
+[node name="Label2" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "A : stânga"
+
+[node name="Label3" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "S : jos"
+
+[node name="Label4" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "D : dreapta"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 46.0
+text = "Înapoi"
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 326.0
+offset_right = 657.0
+offset_bottom = 937.0
+
+[node name="Label" type="Label" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -229.5
+offset_top = 14.0
+offset_right = 243.5
+offset_bottom = 611.0
+grow_horizontal = 2
+text = "Despre joc: \"Arena Graficelor\" este un joc de strategie multiplayer 1v1, unde scopul jocului este să îți copleșești inamicul prin cunoștințele superioare despre funcții.
+Jucătorii alternează în a compune funcții care sunt apoi simulate după ce ambii își termină turele.
+Inițial opțiunile sunt limitate, dar îți poți îmbunătății șansele de câștig prin explorarea arenei care este acoperită de \"ceață\", prevenind jucătorii din a vedea ce se află în centru, planșa schimbându-se în fiecare rundă
+Există 3 moduri de a folosii funcțiile:
+
+-Atac: reduce viața inamicului și distruge obiectele atinse
+-Apărare: nu dispare cănd se lovește de un alt obiect și poate bloca atacurile
+-Recunoaștere: iluminează ceața și distruge apărările"
+autowrap_mode = 2
+justification_flags = 171
+
+[node name="atac" type="Line2D" parent="."]
+position = Vector2(750, 159)
+points = PackedVector2Array(0, 0, 141.675, 0, 800, 0)
+width = 20.0
+default_color = Color(1, 0.215686, 0.631373, 1)
+
+[node name="Label" type="Label" parent="atac"]
+offset_left = 817.0
+offset_top = -13.0
+offset_right = 857.0
+offset_bottom = 10.0
+pivot_offset = Vector2(34, 13)
+theme = ExtResource("1_7mg2u")
+text = "atac"
+
+[node name="apărare" type="Line2D" parent="."]
+position = Vector2(750, 216)
+points = PackedVector2Array(0, 0, 800, 0)
+width = 20.0
+default_color = Color(0, 0.87451, 0.603922, 1)
+
+[node name="Label" type="Label" parent="apărare"]
+offset_left = 813.0
+offset_top = -13.0
+offset_right = 853.0
+offset_bottom = 10.0
+theme = ExtResource("1_7mg2u")
+text = "apărare"
+
+[node name="recunoaștere2" type="Line2D" parent="."]
+position = Vector2(756, 275)
+points = PackedVector2Array(0, 0, 800, 0)
+width = 20.0
+default_color = Color(0.882353, 1, 0.384314, 1)
+
+[node name="Label" type="Label" parent="recunoaștere2"]
+offset_left = 807.0
+offset_top = -12.0
+offset_right = 910.0
+offset_bottom = 11.0
+theme = ExtResource("1_7mg2u")
+text = "recunoaștere"
+
+[node name="Powerup_4x" type="Sprite2D" parent="."]
+position = Vector2(1460, 564)
+texture = ExtResource("2_ru0ol")
+
+[node name="Label" type="Label" parent="Powerup_4x"]
+offset_left = 90.0
+offset_top = 112.0
+offset_right = 138.0
+offset_bottom = 135.0
+theme = ExtResource("1_7mg2u")
+text = "bonus"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 906.0
+offset_top = 401.0
+offset_right = 1032.0
+offset_bottom = 921.0
+color = Color(1, 0.17, 0.17, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 428.0
+offset_right = 220.0
+offset_bottom = 454.18
+text = "obstacol"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

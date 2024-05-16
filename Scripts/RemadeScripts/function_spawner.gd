@@ -29,6 +29,12 @@ func _process(_delta):
 func update_function(sim_time:float) -> void:
 	if !is_collided:
 		function_head.visible = true
+		
+		if mode == 1:
+			sim_time *= 1
+		elif mode == 2:
+			sim_time *= 1.1
+		
 		if player == 1:
 			function_head.position = Vector2(sim_time, Global.Function(sim_time, type, coeff))
 		else: 
@@ -41,9 +47,9 @@ func update_function(sim_time:float) -> void:
 			timer.start()
 
 func reset_function():
-	clear_all_shape()
 	is_collided = true
-	function_head.visible = false
+	$function_head/head.visible = false
+	if mode != 1 :clear_all_shape()
 	
 func create_segment(p1 : Vector2, p2 : Vector2) -> CollisionShape2D:
 	var collision = CollisionShape2D.new()
@@ -53,10 +59,11 @@ func create_segment(p1 : Vector2, p2 : Vector2) -> CollisionShape2D:
 	return collision
 	
 func clear_all_shape():
-	for c in collider.get_children():
-		c.queue_free()
-	curve.clear_points()
-	body.points.clear()
+	#for c in collider.get_children():
+		#c.queue_free()
+	#curve.clear_points()
+	#body.points.clear()
+	queue_free()
 	
 func update_collision_shape():
 	var n = body.points.size()
@@ -85,13 +92,12 @@ func _on_timer_timeout():
 	prev_p = curr_p
 	
 func _on_collider_area_entered(area):
-	if area.is_in_group("bound"): reset_function()
+	if area.is_in_group("bound"): clear_all_shape()
 	elif area.is_in_group("player"): reset_function()
 	elif area.is_in_group("powerup"): pass
+	elif area.is_in_group("obstacle"): reset_function()
 	elif area.get_parent() is FunctionSpawner and player != area.get_parent().player:
-		if area.is_in_group("obstacle"):
-			reset_function()
-		elif mode == 0:
+		if mode == 0:
 			if area.get_parent().mode == 1: reset_function()
 		elif mode == 1:
 			if area.get_parent().mode == 2: reset_function()
