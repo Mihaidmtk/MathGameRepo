@@ -21,7 +21,7 @@ var p1_sim_functions : Array
 var p2_sim_functions : Array
 
 var sim_time : float
-var SIM_SPEED = 200
+var SIM_SPEED = 300
 func _ready():
 	
 	winner.visible = false
@@ -66,7 +66,7 @@ func _process(delta):
 		if Global.health[0] <= 0:
 			winner.text = "Jucătorul 2 a câștigat"
 		else:
-			winner.text = "Jucătorul 2 a câștigat"
+			winner.text = "Jucătorul 1 a câștigat"
 		
 		
 func _draw():

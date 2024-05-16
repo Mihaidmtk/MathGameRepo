@@ -47,7 +47,7 @@ func _on_area_2d_area_entered(area):
 				label.text == "viața deja la maxim"
 			else:
 				Global.health[p-1] += 1
-				label.tect += "+1 viață"
+				label.text += "+1 viață"
 			
 		#play animation
 		$Sprite2D.visible = false
