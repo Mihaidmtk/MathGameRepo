@@ -25,7 +25,6 @@ func set_powerup(b:int, t:int):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("atac") or area.is_in_group("apărare") or area.is_in_group("recunoaștere"):
-		print("what")
 		area_2d.monitorable = false
 		area_2d.monitoring = false
 		#update Globals

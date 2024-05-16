@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba73wuoqfabgh"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kk18j"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+
+[node name="explosion" type="GPUParticles2D"]
+modulate = Color(0.862745, 0.0117647, 0.0117647, 1)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_kk18j")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.32

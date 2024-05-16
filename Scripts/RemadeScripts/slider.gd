@@ -16,7 +16,7 @@ func set_slider(tag:String, value := 0):
 	coeff_name = tag
 	coefficient_value.value = value
 	coefficient_tag.text = coeff_name + "=" + str(coefficient_value.value)
-	print(coeff_name)
+	
 
 func set_range(minv:int, maxv:int):
 	coefficient_value.min_value = minv

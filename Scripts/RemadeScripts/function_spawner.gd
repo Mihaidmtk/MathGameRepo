@@ -1,11 +1,13 @@
 extends Node2D
 class_name FunctionSpawner
 
+
 @onready var function_head = $function_head
 @onready var body = $function_head/body
 @onready var curve := Curve2D.new()
 @onready var timer = $function_head/body/Timer
 @onready var collider = $collider
+@onready var explosions = $explosions
 
 
 var segments : Array
@@ -68,15 +70,14 @@ func clear_all_shape():
 func update_collision_shape():
 	var n = body.points.size()
 	integrated = collider.get_child_count()
-	print(n," ",integrated)
 	if n - integrated > 2:
 		segments.clear()
 		for i in range(integrated, n - 1):
 			segments.append(create_segment(body.points[i], body.points[i+1]))
-			#print(segments)
+			
 			#segments.append(create_circle(body.points[i]))
 		for s in segments: collider.add_child(s)
-		print(collider.get_child_count())
+		
 
 func _on_timer_timeout():
 	if collider.get_child_count() == 1:
@@ -128,4 +129,3 @@ func set_function(p:int, t:int, m:int, c:Vector3):
 	elif m == 2:
 		body.modulate = Color("#E1FF62")
 		collider.add_to_group("recunoaștere")
-
