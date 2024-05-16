@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwsl66kk0ojk"]
+
+[ext_resource type="Script" path="res://Scripts/RemadeScripts/fow_cell.gd" id="1_7iabb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64hce"]
+size = Vector2(80, 80)
+
+[node name="fow_cell" type="Node2D"]
+script = ExtResource("1_7iabb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+color = Color(0.94902, 0.627451, 0.627451, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_64hce")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

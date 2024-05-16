@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cwiupwlvafrdd" path="res://Assets/Sprites/player.png" id="2_xeh8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43m8h"]
-size = Vector2(102, 326)
+size = Vector2(102, 866)
 
 [node name="player" type="Node2D"]
 script = ExtResource("1_e3514")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.170248, 0.403444)
+scale = Vector2(0.170248, 1.06519)
 texture = ExtResource("2_xeh8k")
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]

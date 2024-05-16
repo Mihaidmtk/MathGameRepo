@@ -22,8 +22,8 @@ var slider_ranges := {
 	1: 0
 }
 
-var cell_size := Vector2(100, 100)
-var cell_count := Vector2(40, 20)
+var cell_size := Vector2(80, 80)
+var cell_count := Vector2(60, 30)
 
 var background_color := Color("052A59")
 var grid_color := Color("D93B92")
